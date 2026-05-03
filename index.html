@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelie Coiff — coiffeur — Angoulême</title>
+  <meta name="description" content="Découvrez Aurelie Coiff à Angoulême, votre salon de coiffure chaleureux et professionnel pour des coupes tendance et colorations personnalisées." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #b97a56;
+      --secondary: #f4e3d7;
+      --background: #fff8f3;
+      --text: #3a2c23;
+      --cta: #e07a5f;
+      --radius: 12px;
+      --font-heading: 'Quicksand', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--background);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-heading); }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 248, 243, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--secondary);
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--background);
+      border-bottom: 1px solid var(--secondary);
+      z-index: 999;
+      padding: 20px;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--secondary);
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
+    }
+
+    /* ========== HERO ========== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 48px;
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--background) 60%, #ffe8d6 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(185,122,86,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(224,122,95,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #hero h1 {
+      font-size: clamp(1.6rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    #hero h1 span { color: var(--primary); }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+      color: #6b4f3a;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-weight: 400;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: var(--cta);
+      color: #fff;
+      border: none;
+      padding: 15px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: 0 4px 16px rgba(224,122,95,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #c96a4f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(224,122,95,0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 13px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.25s;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .hero-rating {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stars-row { color: #e8a87c; font-size: 1.1rem; letter-spacing: 2px; }
+
+    .rating-text {
+      font-size: 0.82rem;
+      color: #7a5c47;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      .hero-ctas { flex-direction: row; justify-content: center; }
+      .btn-primary, .btn-secondary { width: auto; }
+    }
+
+    /* ========== SECTION BASE ========== */
+    section { padding: 48px 16px; }
+
+    @media (min-width: 768px) { section { padding: 96px 24px; } }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-family: var(--font-body);
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      margin: 0 0 32px;
+    }
+
+    .section-divider.center { margin: 0 auto 32px; }
+
+    /* ========== ABOUT ========== */
+    #presentation { background: #fff; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+    }
+
+    .about-text p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: #5a4033;
+      margin-bottom: 16px;
+    }
+
+    .about-visual {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 40px;
+      text-align: center;
+    }
+
+    .about-icon { font-size: 3rem; margin-bottom: 16px; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .stat-box {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: #7a5c47;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .payment-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .badge {
+      background: var(--secondary);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+    }
+
+    /* ========== SERVICES ========== */
+    #services { background: var(--background); }
+
+    .services-header { text-align: center; margin-bottom: 48px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 600px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .service-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      border: 1px solid var(--secondary);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--cta));
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(185,122,86,0.14);
+    }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: var(--secondary);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .service-name {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: #7a5c47;
+      line-height: 1.7;
+    }
+
+    /* ========== TEAM (equipe placeholder) ========== */
+    #equipe { background: #fff; }
+
+    .equipe-header { text-align: center; margin-bottom: 48px; }
+
+    .equipe-card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .equipe-avatar {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--cta));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 20px;
+      color: #fff;
+    }
+
+    .equipe-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .equipe-role {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .equipe-desc {
+      font-size: 0.88rem;
+      color: #5a4033;
+      line-height: 1.75;
+    }
+
+    /* ========== REVIEWS ========== */
+    #avis_clients { background: var(--secondary); }
+
+    .reviews-header { text-align: center; margin-bottom: 48px; }
+
+    .reviews-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .summary-stars { font-size: 1.3rem; color: #e8a87c; letter-spacing: 3px; }
+
+    .summary-score {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .summary-count {
+      font-size: 0.82rem;
+      color: #7a5c47;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) { .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .review-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(185,122,86,0.08);
+      transition: transform 0.25s;
+    }
+
+    .review-card:hover { transform: translateY(-3px); }
+
+    .review-stars { color: #e8a87c; font-size: 1rem; margin-bottom: 12px; letter-spacing: 2px; }
+
+    .review-text {
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: #5a4033;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .review-text::before { content: '\201C'; color: var(--primary); font-size: 1.5rem; line-height: 0; vertical-align: -0.4em; margin-right: 2px; }
+
+    .review-author {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ========== GALLERY ========== */
+    #galerie { background: var(--background); }
+
+    .gallery-header { text-align: center; margin-bottom: 48px; }
+
+    .gallery-placeholder {
+      background: var(--secondary);
+      border-radius: var(--radius);
+      padding: 60px 20px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    .gallery-placeholder-icon { font-size: 3rem; margin-bottom: 16px; }
+
+    .gallery-placeholder-text {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #7a5c47;
+    }
+
+    .gallery-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7a5c47;
+      margin-top: 20px;
+    }
+
+    /* ========== CONTACT ========== */
+    #contact_rapide { background: #fff; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+
+    .contact-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: var(--secondary);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail {
+      font-size: 0.88rem;
+      color: #5a4033;
+      line-height: 1.6;
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .contact-detail a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .contact-detail a:hover { text-decoration: underline; }
+
+    .contact-form-wrap label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-family: var(--font-body);
+    }
+
+    .contact-form-wrap input,
+    .contact-form-wrap textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--secondary);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text);
+      background: var(--background);
+      margin-bottom: 18px;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .contact-form-wrap input:focus,
+    .contact-form-wrap textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .contact-form-wrap textarea { resize: vertical; min-height: 120px; }
+
+    .form-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-instruction {
+      font-size: 0.85rem;
+      color: #7a5c47;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* ========== HOURS & MAP ========== */
+    #hours_location { background: var(--secondary); }
+
+    .hours-map-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 768px) { .hours-map-grid { grid-template-columns: 1fr 1fr; } }
+
+    .hours-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hours-table { width: 100%; border-collapse: collapse; }
+
+    .hours-table tr { border-bottom: 1px solid rgba(185,122,86,0.15); }
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 10px 0;
+      font-size: 0.88rem;
+      color: #5a4033;
+    }
+
+    .hours-table td:first-child { font-weight: 600; color: var(--text); width: 45%; }
+
+    .hours-closed { color: #b0907a !important; font-style: italic; }
+
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 280px;
+      box-shadow: 0 4px 20px rgba(185,122,86,0.12);
+    }
+
+    .map-container iframe { width: 100%; height: 100%; border: none; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--text);
+      color: #e8d5c4;
+      padding: 48px 20px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner { grid-template-columns: 2fr 1fr 1fr; }
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .footer-desc {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #b09080;
+      max-width: 280px;
+    }
+
+    .footer-heading {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links { list-style: none; }
+
+    .footer-links li { margin-bottom: 8px; }
+
+    .footer-links a {
+      color: #b09080;
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--secondary); }
+
+    .footer-contact p {
+      font-size: 0.82rem;
+      color: #b09080;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .footer-contact a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .footer-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-stars { color: #e8a87c; font-size: 0.9rem; }
+
+    .footer-rating-text {
+      font-size: 0.78rem;
+      color: #b09080;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: #7a5c47;
+    }
+
+    .footer-maps-link {
+      font-size: 0.78rem;
+      color: var(--secondary);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .footer-maps-link:hover { opacity: 1; }
+
+    /* ========== FADE ANIMATION ========== */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .fade-in.visible { opacity: 1; }
+
+    /* ========== TRUST SIGNALS ========== */
+    .trust-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid var(--secondary);
+    }
+
+    @media (min-width: 768px) { .trust-row { grid-template-columns: repeat(4, 1fr); } }
+
+    .trust-item {
+      text-align: center;
+      padding: 20px 12px;
+      background: var(--secondary);
+      border-radius: var(--radius);
+    }
+
+    .trust-icon { font-size: 1.6rem; margin-bottom: 8px; }
+
+    .trust-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      font-family: var(--font-heading);
+    }
+
+    /* ========== DAY HIGHLIGHT ========== */
+    .today-row td { color: var(--primary) !important; font-weight: 700 !important; }
+    .today-indicator {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--primary);
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-brand">Aurelie Coiff</a>
+    <ul class="nav-links">
+      <li><a href="#presentation">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#equipe">Équipe</a></li>
+      <li><a href="#avis_clients">Avis</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#contact_rapide">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#presentation" class="mobile-link">À propos</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#equipe" class="mobile-link">Équipe</a>
+    <a href="#avis_clients" class="mobile-link">Avis clients</a>
+    <a href="#galerie" class="mobile-link">Galerie</a>
+    <a href="#contact_rapide" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <span class="hero-badge">✂ Salon de coiffure — Angoulême</span>
+      <h1>Votre salon de coiffure <span>à Angoulême</span></h1>
+      <p class="hero-sub">Coupes tendance et colorations personnalisées au cœur de la Charente.</p>
+      <div class="hero-ctas">
+        <a href="tel:+33545928664" class="btn-primary">Prendre rendez-vous</a>
+        <a href="#presentation" class="btn-secondary">En savoir plus</a>
+      </div>
+      <div class="hero-rating">
+        <span class="stars-row">★★★★★</span>
+        <span class="rating-text"><strong>4.7</strong> / 5 — 133 avis Google</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESENTATION -->
+  <section id="presentation">
+    <div class="section-inner">
+      <div class="about-grid fade-in">
+        <div class="about-text">
+          <span class="section-label">Notre histoire</span>
+          <h2 class="section-title">À propos de nous</h2>
+          <div class="section-divider"></div>
+          <p>Bienvenue chez Aurelie Coiff, votre salon de coiffure moderne et accueillant situé au centre-ville d'Angoulême, dans le quartier Victor Hugo. Nous offrons une expérience client exceptionnelle avec des services adaptés à toute la famille.</p>
+          <p>Profitez de nos conseils beauté et de nos soins capillaires de qualité. Les rendez-vous sont recommandés pour garantir une attention personnalisée.</p>
+          <div class="payment-badges">
+            <span class="badge">💳 Carte de crédit</span>
+            <span class="badge">💳 Carte de débit</span>
+            <span class="badge">📱 Paiement NFC</span>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-icon">✂</div>
+          <div class="about-stats">
+            <div class="stat-box">
+              <div class="stat-number">4.7</div>
+              <div class="stat-label">Note Google</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">133</div>
+              <div class="stat-label">Avis clients</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">5j/7</div>
+              <div class="stat-label">Ouvert</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">🏠</div>
+              <div class="stat-label">Centre-ville</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header fade-in">
+        <span class="section-label">Ce que nous proposons</span>
+        <h2 class="section-title">Nos services</h2>
+        <div class="section-divider center"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">✂</div>
+          <div class="service-name">Coupes tendance</div>
+          <p class="service-desc">Des coupes modernes pour tous les styles.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🎨</div>
+          <div class="service-name">Colorations personnalisées</div>
+          <p class="service-desc">Exprimez votre personnalité avec nos colorations sur mesure.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">💆</div>
+          <div class="service-name">Soins capillaires</div>
+          <p class="service-desc">Des soins adaptés pour des cheveux en pleine santé.</p>
+        </div>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item fade-in">
+          <div class="trust-icon">🌿</div>
+          <div class="trust-text">Produits naturels & végétaux</div>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">👨‍👩‍👧</div>
+          <div class="trust-text">Toute la famille bienvenue</div>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">📅</div>
+          <div class="trust-text">Sur rendez-vous</div>
+        </div>
+        <div class="trust-item fade-in">
+          <div class="trust-icon">📍</div>
+          <div class="trust-text">Centre-ville Angoulême</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section id="equipe">
+    <div class="section-inner">
+      <div class="equipe-header fade-in">
+        <span class="section-label">Rencontrez-nous</span>
+        <h2 class="section-title">Notre équipe</h2>
+        <div class="section-divider center"></div>
+      </div>
+      <div class="equipe-card fade-in">
+        <div class="equipe-avatar">✂</div>
+        <div class="equipe-name">Aurélie</div>
+        <div class="equipe-role">Coiffeuse & Fondatrice</div>
+        <p class="equipe-desc">Passionnée par son métier, Aurélie met tout son savoir-faire au service de votre beauté. Spécialiste des colorations végétales et des soins capillaires personnalisés, elle accueille toute la famille avec professionnalisme et bienveillance au cœur d'Angoulême.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS CLIENTS -->
+  <section id="avis_clients">
+    <div class="section-inner">
+      <div class="reviews-header fade-in">
+        <span class="section-label">Ce que disent nos clients</span>
+        <h2 class="section-title">Avis clients</h2>
+        <div class="section-divider center"></div>
+        <div class="reviews-summary">
+          <span class="summary-stars">★★★★★</span>
+          <span class="summary-score">4.7</span>
+          <span class="summary-count">sur 5 — 133 avis Google</span>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card fade-in">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Très satisfaite du résultat qui a fait l'unanimité dans mon entourage, je ne connaissais pas la coloration végétale mais sens que je vais devenir une adepte... je remercie de plus Aurélie...</p>
+          <div class="review-author">Juliette</div>
+        </div>
+        <div class="review-card fade-in">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Personne de confiance car contacter par téléphone en février pour des prestations en juillet. Echange par téléphone pour se mettre d'accord sur les prestations de coiffure et de maquillage. Et...</p>
+          <div class="review-author">Virginie Regulier</div>
+        </div>
+        <div class="review-card fade-in">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Prise de rdv pour ma fille 6 ans ( métisse), 1ere rencontre. Très bien accueilli, connaît la texture du cheveux de ma fille et s'est très rassurant car beaucoup d'autres coiffeurs ne sont pas cap...</p>
+          <div class="review-author">DUCHEIX MARIE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie">
+    <div class="section-inner">
+      <div class="gallery-header fade-in">
+        <span class="section-label">Nos réalisations</span>
+        <h2 class="section-title">Galerie</h2>
+        <div class="section-divider center"></div>
+      </div>
+      <div class="gallery-placeholder fade-in">
+        <div class="gallery-placeholder-icon">📷</div>
+        <p class="gallery-placeholder-text">Découvrez nos réalisations avant/après.</p>
+        <p style="font-size:0.82rem; color:#b09080; margin-top:10px;">Retrouvez toutes nos créations sur notre page Google.</p>
+      </div>
+      <p class="gallery-caption">Coupes tendance, colorations sur mesure et soins capillaires — Angoulême</p>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION (inline section for footer reference) -->
+  <section id="hours_location" style="background:#fff;">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:48px;" class="fade-in">
+        <span class="section-label">Planifiez votre visite</span>
+        <h2 class="section-title">Horaires et localisation</h2>
+        <div class="section-divider center"></div>
+      </div>
+      <div class="hours-map-grid fade-in">
+        <div>
+          <h3 class="hours-title">🕐 Nos horaires d'ouverture</h3>
+          <table class="hours-table" id="hoursTable">
+            <tbody>
+              <tr data-day="1"><td>Lundi</td><td>9h – 18h</td></tr>
+              <tr data-day="2"><td>Mardi</td><td>9h – 18h</td></tr>
+              <tr data-day="3"><td>Mercredi</td><td class="hours-closed">Fermé</td></tr>
+              <tr data-day="4"><td>Jeudi</td><td>9h – 18h</td></tr>
+              <tr data-day="5"><td>Vendredi</td><td>9h – 18h</td></tr>
+              <tr data-day="6"><td>Samedi</td><td>9h – 18h</td></tr>
+              <tr data-day="0"><td>Dimanche</td><td class="hours-closed">Fermé</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:24px; padding:16px; background:var(--secondary); border-radius:var(--radius); font-size:0.82rem; color:#5a4033; line-height:1.6;">
+            <strong style="color:var(--text); display:block; margin-bottom:4px;">📍 Adresse</strong>
+            33 Rue du Sauvage, 16000 Angoulême, France<br/>
+            <a href="tel:+33545928664" style="color:var(--primary); text-decoration:none; font-weight:600; margin-top:6px; display:inline-block;">📞 +33 5 45 92 86 64</a>
+          </div>
+        </div>
+        <div>
+          <div class="map-container">
+            <iframe
+              src="https://maps.google.com/maps?q=45.647824199999995,0.1589335&z=16&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Aurelie Coiff — 33 Rue du Sauvage, Angoulême"
+            ></iframe>
+          </div>
+          <div style="margin-top:12px; text-align:center;">
+            <a href="https://www.google.com/maps/place/?q=place_id:ChIJGTRQdXoy_kcRoywM7KAvtDM" target="_blank" rel="noopener" style="font-size:0.8rem; color:var(--primary); text-decoration:none; font-weight:600;">
+              📍 Voir sur Google Maps →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT RAPIDE -->
+  <section id="contact_rapide" style="background:var(--background);">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:48px;" class="fade-in">
+        <span class="section-label">Parlons-nous</span>
+        <h2 class="section-title">Contactez-nous</h2>
+        <div class="section-divider center"></div>
+      </div>
+      <div class="contact-grid fade-in">
+        <div class="contact-info">
+          <h3>Nous sommes là pour vous</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Adresse</strong>
+              33 Rue du Sauvage<br/>16000 Angoulême, France
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <strong>Téléphone</strong>
+              <a href="tel:+33545928664">+33 5 45 92 86 64</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-detail">
+              <strong>Horaires</strong>
+              Lun–Mar, Jeu–Ven : 9h – 18h<br/>
+              Samedi : 9h – 18h<br/>
+              Mer & Dim : Fermé
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⭐</div>
+            <div class="contact-detail">
+              <strong>Avis Google</strong>
+              4.7 / 5 sur 133 avis
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <div class="form-title">Envoyez-nous un message</div>
+          <p class="form-instruction">Pour toute question ou prise de rendez-vous, contactez-nous dès aujourd'hui.</p>
+          <form action="#" method="POST" onsubmit="handleFormSubmit(event)">
+            <label for="name">Votre nom</label>
+            <input type="text" id="name" name="name" placeholder="Prénom Nom" required />
+            <label for="email">Votre email</label>
+            <input type="email" id="email" name="email" placeholder="exemple@email.com" required />
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" placeholder="Décrivez votre demande ou souhaitez prendre rendez-vous..." required></textarea>
+            <button type="submit" class="btn-primary" style="width:100%; max-width:none; text-align:center; padding:15px;">Envoyer le message</button>
+          </form>
+          <div id="formSuccess" style="display:none; margin-top:16px; padding:14px 18px; background:#eaf7ea; border-radius:var(--radius); color:#2d6a2d; font-size:0.85rem; font-weight:600;">
+            ✅ Votre message a été envoyé. Nous vous répondrons rapidement !
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">✂ Aurelie Coiff</div>
+        <p class="footer-desc">Votre salon de coiffure chaleureux et professionnel au cœur d'Angoulême. Coupes tendance, colorations végétales et soins capillaires personnalisés.</p>
+        <div class="footer-rating">
+          <span class="footer-stars">★★★★★</span>
+          <span class="footer-rating-text">4.7 / 5 — 133 avis Google</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#presentation">À propos</a></li>
+          <li><a href="#services">Nos services</a></li>
+          <li><a href="#equipe">Notre équipe</a></li>
+          <li><a href="#avis_clients">Avis clients</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#contact_rapide">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-heading">Contact</div>
+        <p>📍 33 Rue du Sauvage<br/>16000 Angoulême, France</p>
+        <p>📞 <a href="tel:+33545928664">+33 5 45 92 86 64</a></p>
+        <p>🕐 Lun–Mar, Jeu–Sam : 9h–18h<br/>Mer & Dim : Fermé</p>
+        <p style="margin-top:14px;">
+          <a href="https://www.google.com/maps/place/?q=place_id:ChIJGTRQdXoy_kcRoywM7KAvtDM" target="_blank" rel="noopener" class="footer-maps-link">
+            📍 Voir sur Google Maps →
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Aurelie Coiff — Angoulême. Tous droits réservés.</p>
+      <a href="https://www.google.com/maps/place/?q=place_id:ChIJGTRQdXoy_kcRoywM7KAvtDM" target="_blank" rel="noopener" class="footer-maps-link">Google Maps</a>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Highlight today's hours
+    const today = new Date().getDay();
+    const todayRow = document.querySelector(`tr[data-day="${today}"]`);
+    if (todayRow) {
+      todayRow.classList.add('today-row');
+      const dayCell = todayRow.querySelector('td:first-child');
+      if (dayCell) {
+        const indicator = document.createElement('span');
+        indicator.className = 'today-indicator';
+        indicator.title = "Aujourd'hui";
+        dayCell.appendChild(indicator);
+      }
+    }
+
+    // Intersection Observer for fade-in
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Form submit handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const successMsg = document.getElementById('formSuccess');
+      successMsg.style.display = 'block';
+      e.target.reset();
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Sticky nav shadow on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 10) {
+        nav.style.boxShadow = '0 2px 16px rgba(58,44,35,0.08)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
